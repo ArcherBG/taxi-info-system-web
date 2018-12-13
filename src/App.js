@@ -1,28 +1,42 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import OrdersTable from "./components/OrdersTable";
+import AllOrdersAfterDateForRegistrationNumber from "./components/AllOrdersAfterDateForRegistrationNumber";
+import TotalDrivenDistanceForAllCars from "./components/TotalDrivenDistanceForAllCars";
+import AllOrdersMadeWithInvalidLicense from "./components/AllOrdersMadeWithInvalidLicense";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const Index = () => <h2>Home</h2>;
 
-export default App;
+const AppRouter = () => (
+  <Router>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/orders/">Orders</Link>
+          </li>
+          {/* <li>
+            <Link to="/composite/ordersforcar/">All orders after date for given registration number</Link>
+          </li> */}
+          <li>
+            <Link to="/composite/tataldrivendistance/">Total driven distance for all cars</Link>
+          </li>
+          <li>
+            <Link to="/composite/orderswithinvalidlicense/">All orders made with invalid License</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Route path="/" exact component={Index} />
+      <Route path="/orders/" component={OrdersTable} />
+      <Route path="/composite/ordersforcar/" component={AllOrdersAfterDateForRegistrationNumber} />
+      <Route path="/composite/tataldrivendistance/" component={TotalDrivenDistanceForAllCars} />
+      <Route path="/composite/orderswithinvalidlicense/" component={AllOrdersMadeWithInvalidLicense} />
+    </div>
+  </Router>
+);
+
+export default AppRouter;
