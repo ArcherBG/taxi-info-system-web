@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './styles.css';
 
 export default class AllOrdersAfterDateForRegistrationNumber extends React.Component {
   constructor(props) {
@@ -10,9 +11,16 @@ export default class AllOrdersAfterDateForRegistrationNumber extends React.Compo
     }
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3000/api/composite/ordersforcar')
-      .then(res => res.json())
+  submitForm = (event) => {
+    event.preventDefault();
+    const regNumber = event.target.registration_number.value;
+    const date = event.target.date.value;
+
+    fetch('http://localhost:3000/api/composite/ordersforcar', {
+      method: 'POST',
+      headers: {'Content-Type':'application/x-www-form-urlencoded'}, 
+      body: JSON.stringify({ date: date, registrationNumber: regNumber })
+    }).then(res => res.json())
       .then((result) => {
         console.log('result: ', result);
         this.setState({
@@ -36,6 +44,19 @@ export default class AllOrdersAfterDateForRegistrationNumber extends React.Compo
       const orders = this.state.orders;
       return (
         <div>
+          <form onSubmit={this.submitForm}>
+            <div>
+              <label>Registration Number</label>
+              <input type="text" name="registration_number" />
+            </div>
+            <div>
+              <label>Date</label>
+              <input type="Date" name="date"></input>
+            </div>
+            <div>
+              <button type="submit" >Submit</button>
+            </div>
+          </form>
           <table className="table table-bordered inventory-table table-striped">
             <thead>
               <tr>
@@ -80,7 +101,7 @@ export default class AllOrdersAfterDateForRegistrationNumber extends React.Compo
                   <td>{order.brand}</td>
                   <td>{order.model}</td>
                   <td>{order.passenger_seats}</td>
-                  <td>{order.big_boot? "Yes" : "No"}</td>
+                  <td>{order.big_boot ? "Yes" : "No"}</td>
                   <td>{order.mot_expiration}</td>
                 </tr>
               ))
