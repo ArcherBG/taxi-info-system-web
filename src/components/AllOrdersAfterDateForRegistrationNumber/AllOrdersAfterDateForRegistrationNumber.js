@@ -6,7 +6,7 @@ export default class AllOrdersAfterDateForRegistrationNumber extends React.Compo
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      isLoaded: true,
       orders: []
     }
   }
@@ -15,14 +15,12 @@ export default class AllOrdersAfterDateForRegistrationNumber extends React.Compo
     event.preventDefault();
     const regNumber = event.target.registration_number.value;
     const date = event.target.date.value;
-
     fetch('http://localhost:3000/api/composite/ordersforcar', {
       method: 'POST',
-      headers: {'Content-Type':'application/x-www-form-urlencoded'}, 
+      headers: {'Content-Type':'application/json'}, 
       body: JSON.stringify({ date: date, registrationNumber: regNumber })
     }).then(res => res.json())
       .then((result) => {
-        console.log('result: ', result);
         this.setState({
           isLoaded: true,
           orders: result,
@@ -83,7 +81,7 @@ export default class AllOrdersAfterDateForRegistrationNumber extends React.Compo
             </thead>
             <tbody>{
               orders.map((order, index) => (
-                <tr key={order.orderId}>
+                <tr key={index}>
                   <td>{order.orderId}</td>
                   <td>{order.startTime}</td>
                   <td>{order.distance}</td>
@@ -109,6 +107,6 @@ export default class AllOrdersAfterDateForRegistrationNumber extends React.Compo
           </table>
         </div>
       );
-    }
+     }
   }
 }
