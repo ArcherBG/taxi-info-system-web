@@ -4,6 +4,9 @@ import OrdersTable from "./components/OrdersTable";
 import AllOrdersAfterDateForRegistrationNumber from "./components/AllOrdersAfterDateForRegistrationNumber/AllOrdersAfterDateForRegistrationNumber";
 import TotalDrivenDistanceForAllCars from "./components/TotalDrivenDistanceForAllCars";
 import AllOrdersMadeWithInvalidLicense from "./components/AllOrdersMadeWithInvalidLicense";
+import MostExperiencedDriver from "./components/MostExperiencedDriver/MostExperiencedDriver";
+import TotalBillForDriverComponent from "./components/TotalBillForDriverComponent/TotalBillForDriverComponent";
+import CreateCarComponent from "./components/CreateCarComponent/CreateCarComponent";
 
 const Index = () => <h2>Home</h2>;
 
@@ -32,6 +35,15 @@ const AppRouter = () => (
           <li>
             <Link to="/composite/ordersforcar/">All orders after date for given registration number</Link>
           </li>
+          <li>
+            <Link to="/composite/mostexperienceddriver/">Most experienced driver</Link>
+          </li>
+          <li>
+            <Link to="/composite/totalbill/">Total bill for driver</Link>
+          </li>
+          <li>
+            <Link to="/composite/createcar/">Create car</Link>
+          </li>
         </ul>
       </nav>
 
@@ -40,6 +52,9 @@ const AppRouter = () => (
       <Route path="/composite/tataldrivendistance/" component={TotalDrivenDistanceForAllCars} />
       <Route path="/composite/orderswithinvalidlicense/" component={AllOrdersMadeWithInvalidLicense} />
       <Route path="/composite/ordersforcar/" component={AllOrdersAfterDateForRegistrationNumber} />
+      <Route path="/composite/mostexperienceddriver/" component={MostExperiencedDriver} />
+      <Route path="/composite/totalbill/" component={TotalBillForDriverComponent} />
+      <Route path="/composite/createcar/" component={CreateCarComponent} />
     </div>
   </Router>
 );
