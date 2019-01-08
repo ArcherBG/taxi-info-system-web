@@ -51,7 +51,7 @@ export default class UpdateOrderComponent extends React.Component {
         <div>
           <form onSubmit={this.submitForm}>
             <div>
-              <label>Taxi Number</label>
+              <label>Registration Number</label>
               <input type="text" name="taxiNumber" />
             </div>
             <div>

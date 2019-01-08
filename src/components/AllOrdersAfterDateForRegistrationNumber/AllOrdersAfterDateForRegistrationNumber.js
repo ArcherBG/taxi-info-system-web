@@ -82,7 +82,7 @@ export default class AllOrdersAfterDateForRegistrationNumber extends React.Compo
             <tbody>{
               orders.map((order, index) => (
                 <tr key={index}>
-                  <td>{order.orderId}</td>
+                  <td>{index}</td>
                   <td>{order.startTime}</td>
                   <td>{order.distance}</td>
                   <td>{order.bill}</td>

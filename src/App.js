@@ -13,7 +13,7 @@ const Index = () => <h2>Home</h2>;
 
 const AppRouter = () => (
   <Router>
-    <div>
+    <div style={{'margin-left': '2em'}}>
       <nav>
         <div>GET Requests</div>
         <ul>

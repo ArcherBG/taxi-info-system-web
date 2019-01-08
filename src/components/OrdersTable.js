@@ -63,7 +63,7 @@ export default class OrderTable extends React.Component {
             <tbody>{
               orders.map((order, index) => (
                 <tr key={order.orderId}>
-                  <td>{order.orderId}</td>
+                  <td>{index}</td>
                   <td>{order.startTime}</td>
                   <td>{order.distance}</td>
                   <td>{order.bill}</td>
@@ -73,7 +73,7 @@ export default class OrderTable extends React.Component {
                   <td>{order.first_name}</td>
                   <td>{order.last_name}</td>
                   <td>{order.egn}</td>
-                  <td>{order.license_valid}</td>
+                  <td>{order.license_valid.slice(0, 10)}</td>
                   <td>{order.experience_in_days}</td>
                   <td>{order.taxi_number}</td>
                   <td>{order.registration_number}</td>
@@ -81,7 +81,7 @@ export default class OrderTable extends React.Component {
                   <td>{order.model}</td>
                   <td>{order.passenger_seats}</td>
                   <td>{order.big_boot? "Yes" : "No"}</td>
-                  <td>{order.mot_expiration}</td>
+                  <td>{order.mot_expiration.slice(0, 10)}</td>
                 </tr>
               ))
             }</tbody>
