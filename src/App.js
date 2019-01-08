@@ -7,6 +7,7 @@ import AllOrdersMadeWithInvalidLicense from "./components/AllOrdersMadeWithInval
 import MostExperiencedDriver from "./components/MostExperiencedDriver/MostExperiencedDriver";
 import TotalBillForDriverComponent from "./components/TotalBillForDriverComponent/TotalBillForDriverComponent";
 import CreateCarComponent from "./components/CreateCarComponent/CreateCarComponent";
+import UpdateOrderComponent from "./components/UpdateOrderComponent/UpdateOrderComponent";
 
 const Index = () => <h2>Home</h2>;
 
@@ -45,6 +46,12 @@ const AppRouter = () => (
             <Link to="/composite/createcar/">Create car</Link>
           </li>
         </ul>
+        <div>PUT Requests</div>
+        <ul>
+          <li>
+            <Link to="/composite/updateorder/">Update order</Link>
+          </li>
+        </ul>
       </nav>
 
       <Route path="/" exact component={Index} />
@@ -55,6 +62,7 @@ const AppRouter = () => (
       <Route path="/composite/mostexperienceddriver/" component={MostExperiencedDriver} />
       <Route path="/composite/totalbill/" component={TotalBillForDriverComponent} />
       <Route path="/composite/createcar/" component={CreateCarComponent} />
+      <Route path="/composite/updateorder/" component={UpdateOrderComponent} />
     </div>
   </Router>
 );
