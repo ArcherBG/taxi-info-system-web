@@ -7,7 +7,7 @@ export default class CreateCarComponent extends React.Component {
     this.state = {
       error: null,
       isLoaded: true,
-      result: []
+      result: 0
     }
   }
 
